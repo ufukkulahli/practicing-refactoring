@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+obj
+bin
+.vscode
+practicing-refactoring.sln.DotSettings.user
