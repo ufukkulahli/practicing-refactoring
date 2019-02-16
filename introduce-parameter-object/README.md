@@ -1,4 +1,4 @@
-#Introduce Parameter Object
+**Introduce Parameter Object**
 
 When the numbers of method parameters increase then we can use this technique.
 Simply, put method parameters into a new object and then use this object for method parameter.
@@ -28,7 +28,8 @@ public class Calculator
 }
   ```
 
-###Notes
+Notes
+
 But on the other hand, a method with many parameters is a signal of loosing the "single responsibility".
 This should be refactored with other techniques.
 
