@@ -9,24 +9,25 @@ Because objects should defend themselves to random changes.
 
 **Example**
  
- _Issue_
+_Issue_
  
- ```csharp
- customer.SetId(1234);
- ```
+```csharp
+customer.SetId(1234);
+```
  
- _Refactoring_
+_Refactoring_
  
- ```csharp
+```csharp
 public class Customer
 {
-    private readonly int Id;
-    
-    public Customer(int Id)
-    {
-      this.Id = Id;
-    }
-    
-    ~~public void SetId(int Id) { this.Id=Id; }~~
+  private readonly int Id;
+
+  public Customer(int Id)
+  {
+    this.Id = Id;
+  }
+
+  // Deleted
+  // public void SetId(int Id) { this.Id=Id; }
 }
-  ```
+```
