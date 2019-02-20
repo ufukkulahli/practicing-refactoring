@@ -11,16 +11,19 @@ We call this _Command and Query Responsibility Segregation_.
 A method either should return value or modify something.
 
 **Example**
- 
- _Issue_
- 
- ```csharp
+
+_Issue_
+
+```csharp
 var countries = GetCountriesAndFillUpCache();
- ```
- 
- _Refactoring_
- 
- ```csharp
- FillUpCache();
- var countries = GetCountries();
-  ```
+```
+
+_Refactoring_
+
+```csharp
+FillUpCache();
+var countries = GetCountries();
+```
+
+This technique helps other refactorings
+* Replace temp with query

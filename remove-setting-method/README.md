@@ -31,3 +31,6 @@ public class Customer
   // public void SetId(int Id) { this.Id=Id; }
 }
 ```
+
+This technique helps other refactorings
+* Change reference to value
