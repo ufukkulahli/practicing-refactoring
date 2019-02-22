@@ -1,4 +1,4 @@
-**Remove Setting Method**
+**Replace Constructor with Factory Method**
 
 When we have many constructor arguments to initialize a object things get easily messy.
 Instead of depending constructor we can use a factory method.
