@@ -14,7 +14,7 @@ public class Customer
   public readonly DateTime Birthday;
   public readonly string Name;
   public readonly string Surname;
-  
+
   public Customer
   (
     int Id,
@@ -23,7 +23,7 @@ public class Customer
     string Surname
   )
   {
-    this.Id
+    this.Id = Id;
     this.Birthday = Birthday;
     this.Name = Name;
     this.Surname = Surname;
@@ -40,7 +40,7 @@ public class Customer
   public DateTime Birthday;
   public string Name;
   public string Surname;
-  
+
   public static Customer Create
   (
     int Id,
@@ -50,12 +50,102 @@ public class Customer
   )
   {
     return new Customer
-  {
+    {
       Id = Id,
       Birthday = Birthday,
       Name = Name,
       Surname = Surname
-  };
+    };
   }
 }
 ```
+
+This technique is better known for creating business object types / subtypes
+depending on an argument and deciding upon it.
+
+Here we use type parameter to decide the customer type.
+
+```csharp
+public class Customer
+{
+  private int _type;
+  public static int Regular = 0;
+  public static int Newcomer = 1;
+  public static int Loyal = 2;
+  public int Id;
+  public DateTime Birthday;
+  public string Name;
+  public string Surname;
+
+  public Customer
+  (
+    int type,
+    int Id,
+    DateTime Birthday,
+    string Name,
+    string Surname
+  )
+  {
+    this._type = type;
+    this.Id = Id;
+    this.Birthday = Birthday;
+    this.Name = Name;
+    this.Surname = Surname;
+  }
+}
+```
+
+to:
+
+```csharp
+public class Customer
+  {
+    private int _type;
+    public static int Regular;
+    public static int Newcomer;
+    public static int Loyal;
+    public int Id;
+    public DateTime Birthday;
+    public string Name;
+    public string Surname;
+
+    private Customer()
+    {
+    }
+
+    public static Customer Create
+    (
+      int type,
+      int Id,
+      DateTime Birthday,
+      string Name,
+      string Surname
+    )
+    {
+      return new Customer
+      {
+        _type = type,
+        Id = Id,
+        Birthday = Birthday,
+        Name = Name,
+        Surname = Surname
+      };
+    }
+```
+
+and the client code:
+
+```csharp
+var customer = Customer.Create
+(
+  type: Customer.Newcomer,
+  Id: 1234,
+  Birthday: new DateTime(1980, 1, 1),
+  Name: "Johny",
+  Surname: "Begood"
+);
+```
+
+It is up to us to make constructor private.
+Since we are using static method to create object we might want to control creation.
+Careless constructor use might lead to unwanted business errors.
