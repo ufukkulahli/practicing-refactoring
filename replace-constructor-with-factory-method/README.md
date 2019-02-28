@@ -149,3 +149,14 @@ var customer = Customer.Create
 It is up to us to make constructor private.
 Since we are using static method to create object we might want to control creation.
 Careless constructor use might lead to unwanted business errors.
+
+Factory method
+* Can return an already created object
+* Can return subclasses of containing class
+
+This technique helps other refactorings
+* Change value to reference
+* Replace type code with subclasses
+
+This technique implements design pattern
+* Factory method
