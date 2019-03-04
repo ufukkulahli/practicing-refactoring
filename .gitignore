@@ -4,3 +4,4 @@ obj
 bin
 .vscode
 practicing-refactoring.sln.DotSettings.user
+*.swp

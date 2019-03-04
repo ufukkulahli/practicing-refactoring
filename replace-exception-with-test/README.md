@@ -38,3 +38,6 @@ string GetDepartmentByName(string name)
 Exceptions are for real errors.  
 And use of them may be expensive for application.  
 So should be used properly.  
+
+Similar refactorings
+* Replace error code with exception
