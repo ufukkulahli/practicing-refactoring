@@ -25,3 +25,8 @@ decimal CalculatePrice(int factor)
 
 This technique should be applied to wherever possible  
 such as fields, properties, classes even its name suggests renaming methods.
+
+This refactoring:
+
+Eliminates smell
+* Comments
