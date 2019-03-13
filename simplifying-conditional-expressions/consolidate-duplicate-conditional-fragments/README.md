@@ -9,29 +9,40 @@ Then move the code outside of conditional and make it used once.
 _Issue_
 
 ```csharp
-if(CanWrite())
+void WriteThenSendEmail()
 {
-  WriteToFile();
-  SendEmail();
-}
-else
-{
-  LogError();
-  SendEmail();
+  if(CanWrite())
+  {
+    WriteToFile();
+    SendEmail();
+  }
+  else
+  {
+    LogError();
+    SendEmail();
+  }
 }
 ```
 
 _Refactoring_
 
 ```csharp
-if(CanWrite())
+void WriteThenSendEmail()
 {
-  WriteToFile();
+  if(CanWrite())
+  {
+    WriteToFile();
+  }
+  else
+  {
+    LogError();
+  }
+  SendEmail();
 }
-else
-{
-  LogError();
-}
-SendEmail();
 ```
 
+This is easy. But we should be careful in quite long methods since if there happens  
+an alternative branching `SendEmail()` method would be called anyways.  
+
+Same approach could be used in try-catch statements.  
+We can move the same codes from `catch` blocks to a `finally` block and make it call once.
