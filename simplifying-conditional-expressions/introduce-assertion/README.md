@@ -6,6 +6,31 @@ We write comments about the state of the program to make these assumptions expli
 Or we would look through the code to see them.  
 So writing an `Assertion` makes all explicit.  
 
+Example
+
+_Issue_
+
+```csharp
+decimal CalculatePrice()
+{
+  // Either of them is alwasy there.
+  if(winterFee || summerFee)
+  {
+    finalPrice = basePrice * piece;
+  }
+}
+```
+
+_Refactoring
+
+```csharp
+decimal CalculatePrice()
+{
+  Assert.IsTrue(winterFee || summerFee)
+  finalPrice = basePrice * piece;
+}
+```
+
 Assertion:
 * Won't change any behaviour.
 * Assumed to be always true.
