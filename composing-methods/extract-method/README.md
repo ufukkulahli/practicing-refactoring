@@ -7,7 +7,7 @@ Giving methods good names is a must.
 By taking out codes to their dedicated methods and giving clear method names we make things official.  
 Method name and its body should overlap semantically. We can use this to decide method long.  
 Names should tell 'what it does' not 'how it does'.  
-If a better method name performs better then extract the code even if it is a single line.  
+If we see that given method name performs better then extract the code even if it is a single line.  
 If otherwise then we can leave it alone.  
 
 Example
@@ -15,17 +15,39 @@ Example
 _Issue_
 
 ```csharp
-//TODO
+decimal CalculatePrice()
+{
+  var basePrice = amount * quantity;
+  var discount = discountAmount + extraDiscountAmount;
+  var finalPrice = basePrice - discount;
+  return finalPrice;
+}
 ```
 
 _Refactoring_
 
 ```chsarp
-//TODO
+decimal CalculatePrice()
+{
+  var basePrice = CalculateBasePrice();
+  var discount = CalculateDiscount();
+  var finalPrice = basePrice - discount;
+  return finalPrice;
+}
+
+decimal CalculateBasePrice()
+{
+  return amount * quantity;
+}
+
+decimal CalculateDiscount()
+{
+  return discountAmount + extraDiscountAmount;
+}
 ```
 
 If some variables prevents or hardens extracting see:
-* `split temporary variable`,
-* `replace temp with query`,
+* `split temporary variable`
+* `replace temp with query`
 * `replace method with method object`
 * `remove assignments to parameters`
