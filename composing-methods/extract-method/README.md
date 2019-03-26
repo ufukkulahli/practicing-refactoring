@@ -79,6 +79,7 @@ void Log(decimal price)
 {
   Console.WriteLine("Calculated price: {0}", price);
 }
+```
 
 If some variables prevents or hardens extracting see:
 * `split temporary variable`
