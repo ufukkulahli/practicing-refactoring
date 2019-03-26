@@ -46,6 +46,40 @@ decimal CalculateDiscount()
 }
 ```
 
+When extracted method needs a local variable from source code block then we need to pass in that.
+
+Example
+
+_Issue_
+
+```csharp
+decimal CalculatePrice()
+{
+  var basePrice = amount * quantity;
+  var discount = discountAmount + extraDiscountAmount;
+  var finalPrice = basePrice - discount;
+  Console.WriteLine("Calculated price: {0}", finalPrice);
+  return finalPrice;
+}
+```
+
+_Refactoring_
+
+```chsarp
+decimal CalculatePrice()
+{
+  var basePrice = amount * quantity;
+  var discount = discountAmount + extraDiscountAmount;
+  var finalPrice = basePrice - discount;
+  Log(finalPrice);
+  return finalPrice;
+}
+
+void Log(decimal price)
+{
+  Console.WriteLine("Calculated price: {0}", price);
+}
+
 If some variables prevents or hardens extracting see:
 * `split temporary variable`
 * `replace temp with query`
