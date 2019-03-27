@@ -81,6 +81,41 @@ void Log(decimal price)
 }
 ```
 
+If we need the value of a method return then do reassigning a local variable
+
+Example
+
+_Issue_
+
+```csharp
+decimal CalculatePrice()
+{
+  var basePrice = amount * quantity;
+  var discount = discountAmount + extraDiscountAmount;
+  var finalPrice = basePrice - discount;
+  Console.WriteLine("Calculated price: {0}", finalPrice);
+  return finalPrice;
+}
+```
+
+_Refactoring_
+
+```chsarp
+decimal CalculatePrice()
+{
+  var basePrice = CalculateBasePrice();
+  var discount = discountAmount + extraDiscountAmount;
+  var finalPrice = basePrice - discount;
+  Log(finalPrice);
+  return finalPrice;
+}
+
+decimal CalculateBasePrice()
+{
+  return amount * quantity;
+}
+```
+
 If some variables prevents or hardens extracting see:
 * `split temporary variable`
 * `replace temp with query`
