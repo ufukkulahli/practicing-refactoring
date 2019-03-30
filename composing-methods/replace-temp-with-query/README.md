@@ -14,13 +14,43 @@ Allows all methods inside class to use query method.
 _Issue_
 
 ```csharp
-// TODO
+decimal CalculatePrice()
+{
+  var price = quantity * itemPrice;
+  decimal discountRate = 0;
+  if (price > 1000)
+  {
+    discountRate = 0.95;
+  }
+  else
+  {
+    discountRate = 0.98;
+  }
+  return price * discountRate;
+}
 ```
 
 _Refactoring_
 
 ```csharp
-// TODO
+decimal CalculatePrice()
+{
+  return CalculateBasePrice() * CalculateDiscountRate();
+}
+
+decimal CalculateBasePrice()
+{
+  return quantity * itemPrice;
+}
+
+decimal CalculateDiscountRate()
+{
+  if (CalculateBasePrice() > 1000)
+  {
+    return 0.95;
+  }
+  return 0.98;
+}
 ```
 
 We may need to use `Split Temporary Variable` or `Separate Query from Modifier` to be able to use this one.
