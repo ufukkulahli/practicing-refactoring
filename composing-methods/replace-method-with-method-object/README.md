@@ -18,7 +18,7 @@ public class Accounting
     var basePrice = amount * quantity;
     if(discountValidDate >= DateTime.Now)
     {
-      return netPrice = basePrice - discount;
+      return basePrice - discount;
     }
     return basePrice - this.dailyDiscount;
   }
@@ -60,7 +60,7 @@ public class CalculatePrice
     var basePrice = this.amount * this.quantity;
     if(this.discountValidDate >= DateTime.Now)
     {
-      return netPrice = basePrice - this.discount;
+      return basePrice - this.discount;
     }
     return basePrice - this.accounting.dailyDiscount;
   }
