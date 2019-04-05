@@ -27,7 +27,7 @@ bool AnyDaltonExist(string[] people)
     {
       return true;
     }
-    if (people.Equals("Avarel"))
+    if (people.Equals("Averell"))
     {
       return true;
     }
@@ -41,7 +41,7 @@ _Refactoring_
 ```csharp
 bool AnyDaltonExist(string[] people)
 {
-  List<string> daltons = new List<string>() {"Joe", "Jack", "William", "Avarel"};
+  List<string> daltons = new List<string>() {"Joe", "Jack", "William", "Averell"};
 
   for (var person in people)
   {
