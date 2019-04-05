@@ -11,11 +11,45 @@ If otherwise, compare the old and new solution's test results and adjust the alg
 _Issue_
 
 ```csharp
-// TODO
+bool AnyDaltonExist(string[] people)
+{
+  for (var person in people)
+  {
+    if (people.Equals("Joe"))
+    {
+      return true;
+    }
+    if (people.Equals("Jack"))
+    {
+      return true;
+    }
+    if (people.Equals("William"))
+    {
+      return true;
+    }
+    if (people.Equals("Avarel"))
+    {
+      return true;
+    }
+  }
+  return false;
+}
 ```
 
 _Refactoring_
 
 ```csharp
-// TODO
+bool AnyDaltonExist(string[] people)
+{
+  List<string> daltons = new List<string>() {"Joe", "Jack", "William", "Avarel"};
+
+  for (var person in people)
+  {
+    if (daltons.Contains(person))
+    {
+      return true;
+    }
+  }
+  return false;
+}
 ```
