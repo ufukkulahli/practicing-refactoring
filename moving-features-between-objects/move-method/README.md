@@ -106,3 +106,9 @@ public class AccountType
   // ...
 }
 ```
+
+When the target class needs a feature from source class we can
+* move this feature to the target class
+* create or use a reference from the target class to the source
+* pass the source object as a parameter to the method
+* pass as a parameter if the feature is a variable
