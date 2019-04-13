@@ -8,13 +8,47 @@ So we move the relevant fields and methods to the new class.
 _Issue_
 
 ```csharp
-// TODO
+public class Person
+{
+  private string name;
+  private string cellPhoneNumber;
+  private string countryCode;
+
+  public string GetCellPhoneNumber() => $"{countryCode}{cellPhoneNumber}";
+
+  public void SetCellPhoneNumber(string countryCode, string cellPhoneNumber)
+  {
+    this.countryCode = countryCode;
+    this.cellPhoneNumber = cellPhoneNumber;
+  }
+}
 ```
 
 _Refactoring_
 
 ```csharp
-// TODO
+public class Person
+{
+  private string name;
+  private CellPhoneNumber cellPhoneNumber  = new CellPhoneNumber();
+
+  public string GetCellPhoneNumber() => this.cellPhoneNumber.GetCellPhoneNumber();
+  public CellPhoneNumber GetCellPhoneNumberObj() => this.cellPhoneNumber;
+}
+
+public class CellPhoneNumber
+{
+  private string cellPhoneNumber;
+  private string countryCode;
+
+  public string GetCellPhoneNumber() => countryCode + cellPhoneNumber;
+
+  public void SetCellPhoneNumber(string countryCode, string cellPhoneNumber)
+  {
+    this.countryCode = countryCode;
+    this.cellPhoneNumber = cellPhoneNumber;
+  }
+}
 ```
 
 To extract a class a rule of thumb could be the  
@@ -30,4 +64,3 @@ After creating the new class we decide how much `expose` of it to clients
 Another important decision is how to `expose` of new class
 * As a `reference object`
 * As an `immutable value object`
-
