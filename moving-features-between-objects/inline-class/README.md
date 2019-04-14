@@ -1,7 +1,7 @@
 **Inline Class**
 
-When we see that a class does almost nothing and no responsibility will be added in the future.
-So we can move its members to a most relevant class and delete it.
+When we see that a class does almost nothing and no responsibility will be added in the future.  
+So we can move its members to a most relevant class and delete it.  
 This technique is the reverse of `extract class`.
 
 **Example**
