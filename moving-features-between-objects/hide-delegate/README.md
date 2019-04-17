@@ -13,13 +13,55 @@ By providing a delegate method on the server object to `client codes`:
 _Issue_
 
 ```csharp
-// TODO:
+public class Student
+{
+  public Class Class{get;set;}
+}
+
+public class Class
+{
+  private Teacher teacher;
+  public Class(Teacher teacher) => this.teacher = teacher;
+  public Teacher GetTeacher() => this.teacher;
+}
+
+public class Program
+{
+  public void Main()
+  {
+    // ...
+    var teacher = joeTheStudent.Class.GetTeacher();
+    // ...
+  }
+}
 ```
 
 _Refactoring_
 
 ```csharp
-// TODO:
+public class Student
+{
+  private Class Class;
+  public Teacher GetTeacher() => this.Class.GetTeacher();
+}
+
+public class Class
+{
+  private Teacher teacher;
+  public Class(Teacher teacher) => this.teacher = teacher;
+  public Teacher GetTeacher() => this.teacher;
+}
+
+public class Program
+{
+  public void Main()
+  {
+    // ...
+    var teacher = joeTheStudent.GetTeacher();
+    // ...
+  }
+}
+
 ```
 Encapsulation means that `objects need to know less about other parts of the system` causes to be `told about the change to fewer objects`.  
 `Method chanining` and the `train wreck` are the other definitions of these `delegates` that we may encounter.
