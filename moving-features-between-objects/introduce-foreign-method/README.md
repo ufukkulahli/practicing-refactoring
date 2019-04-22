@@ -8,11 +8,31 @@ Example
 _Issue_
 
 ```csharp
-//TODO
+class Report
+{
+  readonly DateTime previousEnd;
+  public Report(DateTime previousEnd)=>this.previousEnd=previousEnd;
+  void SendReport()
+  {
+    // We want something like `NextWeek` functionality
+    DateTime nextWeek = previousEnd.AddDays(7);
+    //...
+  }
+}
 ```
 
 _Refactoring_
 
 ```csharp
-//TODO
+class Report
+{
+  readonly DateTime previousEnd;
+  public Report(DateTime previousEnd)=>this.previousEnd=previousEnd;
+  void SendReport()
+  {
+    DateTime nextWeek = NextWeek(previousEnd);
+    //...
+  }
+  private static DateTime NextWeek(DateTime date)=>date.AddDays(7);
+}
 ```
