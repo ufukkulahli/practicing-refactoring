@@ -33,6 +33,10 @@ class Report
     DateTime nextWeek = NextWeek(previousEnd);
     //...
   }
+  // Foreign method
   private static DateTime NextWeek(DateTime date)=>date.AddDays(7);
 }
 ```
+
+Commenting as `foreign method` is useful for future lookups.  
+When we have the chance of adding this method onto desired object we can quickly find it with the help of comment.
