@@ -39,6 +39,10 @@ class ExtensionDate
   public int GetYear() => this.original.GetYear();
   public int GetMonth() => this.original.GetMonth();
   public int GetDay() => this.original.GetDay();
+  public CustomDateTime NextWeek()
+  {
+    return new CustomDateTime(GetYear(), GetMonth(), GetDay() + 7);
+  }
 }
 ```
 
