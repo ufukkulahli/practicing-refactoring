@@ -27,3 +27,19 @@ class ExtensionDate : CustomDateTime
   }
 }
 ```
+
+Using wrapper:
+
+```csharp
+class ExtensionDate
+{
+  readonly CustomDateTime original;
+  public ExtensionDate(string dateTime) => this.original = new CustomDateTime(dateTime);
+  public ExtensionDate(CustomDateTime dateTime) => this.original = dateTime;
+  public int GetYear() => this.original.GetYear();
+  public int GetMonth() => this.original.GetMonth();
+  public int GetDay() => this.original.GetDay();
+}
+```
+
+Checking for equality should be done properly!
