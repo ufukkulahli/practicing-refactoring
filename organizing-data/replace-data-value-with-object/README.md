@@ -24,20 +24,21 @@ __Refactoring__
 class Sale
 {
   readonly SaleItem SaleItem;
+  // For existing constructor calls
+  Sale(string SaleItem) => this.SaleItem = new SaleItem(SaleItem);
+  // For new constructor calls
   Sale(SaleItem SaleItem) => this.SaleItem = SaleItem;
   string GetSaleItem() => this.SaleItem.Name();
 }
 
 class SaleItem
 {
-  readonly int Id;
   readonly string name;
-  SaleItem(int Id, string name)
-  {
-    this.Id = Id;
-    this.name = name;
-  }
-  int Id() => this.Id;
+  SaleItem(string name) => this.name = name;
   string Name() => this.name;
 }
 ```
+
+Currently SaleItem is `value object` (so as old string SaleItem) meaning that each Sale has its own SaleItem.  
+Value objects should be immutable.  
+We may turn SaleItem into a `reference object` with the `Change Value to Reference` refactoring.
