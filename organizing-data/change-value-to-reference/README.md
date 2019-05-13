@@ -8,7 +8,20 @@ Example
 
 __Issue__
 ```csharp
-// TODO
+class Customer
+{
+  private readonly name;
+  public Customer(string name) => this.name = name;
+  public string Name() => this.name;
+}
+
+class Order
+{
+  private Customer customer;
+  public Order(string customerName) => this.customer = new Customer(customerName);
+  public string CustomerName() => this.customer.Name();
+  public void SetCustomer(string customerName) => this.customer = new Customer(customerName);
+}
 ```
 
 __Refactoring__
