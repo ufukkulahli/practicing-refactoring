@@ -54,9 +54,14 @@ class Order
 // A client to use 'Order' and 'Customer'.
 class NumberOfOrders
 {
-  public int For(IEnumerable<orders> orders, string customer)
+  public int For(IEnumerable<Orders> orders, string customer)
   {
     return orders.Where(o => o.CustomerName() == customer).Select(o=>o).Count();
   }
 }
 ```
+
+At this point, we decide how to give same instance of 'Customer' to clients.  
+Customers could be loaded into 'instances' `in advance` or `when asked`.  
+Instances variable acts as a accessing point to customers.  
+We may also use another object for registering and obtaining customers.
