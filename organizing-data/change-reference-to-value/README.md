@@ -1,4 +1,4 @@
-**Change Reference to Value*
+**Change Reference to Value**
 
 This refactoring technique is the reverse of `Change Value to Reference`.  
 
