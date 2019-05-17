@@ -1,4 +1,4 @@
-**Replace Array with Object*
+**Replace Array with Object**
 
 An array is being used to represent a object instead of an actual one.  
 
