@@ -6,11 +6,36 @@ Move values to base class fields and get rid of the subclasses.
 _Issue_
 
 ```csharp
-// todo
+abstract class Person
+{
+  abstract bool IsMale();
+  abstract char GetCode();
+}
+class Male : Person
+{
+  bool IsMale() => true;
+  char GetCode() => 'M';
+}
+class FeMale : Person
+{
+  bool IsMale() => false;
+  char GetCode() => 'F';
+}
 ```
 
 _Refactoring_
 
 ```csharp
-// todo
+class Person
+{
+  readonly bool isMale;
+  readonly char code;
+  Person(bool isMale, char code)
+  {
+    this.isMale = isMale;
+    this.code = code;
+  }
+  bool IsMale() => this.isMale;
+  char GetCode() => this.code;
+}
 ```
