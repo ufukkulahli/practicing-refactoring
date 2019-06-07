@@ -31,6 +31,18 @@ _Refactoring_
 class EmployeeType
 {
   abstract int TypeCode();
+  static int Engineer = 0;
+  static int Salesman = 1;
+  static int Manager = 2;
+  static EmployeeType New(int type)
+  {
+    if(type == Engineer)
+      return new Engineer();
+    if(type == Salesman)
+      return new Salesman();
+    if(type == Manager)
+      return new Manager();
+  }
 }
 class Engineer : EmployeeType
 {
@@ -47,5 +59,16 @@ class Manager : EmployeeType
 class Employee
 {
   private EmployeeType employeeType;
+  void SetType(int type) => this.employeeType = EmployeeType.New(type);
+  int GetType() => this.employeeType.TypeCode();
+  int PayAmount()
+  {
+    if(GetType() = EmployeeType.Engineer)
+      return salary;
+    if(GetType() = EmployeeType.Salesman)
+      return salary+commision;
+    if(GetType() = EmployeeType.Manager)
+      return salary+bonus;
+  }
 }
 ```
